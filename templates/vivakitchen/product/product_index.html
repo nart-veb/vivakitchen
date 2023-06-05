@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+        <div class="main-header">
+            <div class="main-header__container container">
+                <div class="breadcrumbs main-header__breadcrumbs">
+                    <ul class="breadcrumbs__list">
+                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="#">главная</a>
+                        </li>
+                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="#">{{title}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <h1 class="main-header__title">{{header}}</h1>
+                <div class="main-header__caption">
+                    <p>{{description}}</p>
+                </div>
+            </div>
+        </div>
+
+
+        <main class="main page__main">
+            <div class="main__container container">
+                <div class="main__grid">
+                    {% for product in product_list %}
+                    <div class="main__col">
+                        <div class="catalog-card is-secondary main__catalog-card">
+                            <a class="catalog-card__photo img-cover" href="{{product.slug}}">
+                                <img src="{{product.avatar.url}}" alt="">
+                                {% if product.novelty == '1' %}
+                                <div class="catalog-card__badge">новинка</div>
+                                {% endif %}
+                            </a><a class="catalog-card__title" href="#"> Кухня <br>{{ product.name }}</a>
+                            <div class="catalog-card__list">
+
+
+
+                                {% if product.value_left %}
+                                <div class="catalog-card__item">{{ product.value_left }}</div>
+                                {% endif %}
+                                {% if product.value_right %}
+                                <div class="catalog-card__item">{{ product.value_right }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% if product.price %}
+                            <div class="catalog-card__price">от {{product.price}} ₽</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <div class="page-nav main__nav">
+                    <a class="page-nav__link is-prev is-active" href="#">
+                        <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.07086 8.51528C8.70066 8.14508 8.70066 7.54487 9.07086 7.17467L15.1036 1.14191C15.4738 0.771708 16.074 0.771708 16.4442 1.14191C16.8144 1.51211 16.8144 2.11232 16.4442 2.48252L11.0818 7.84498L16.4442 13.2074C16.8144 13.5776 16.8144 14.1778 16.4442 14.548C16.074 14.9182 15.4738 14.9182 15.1036 14.548L9.07086 8.51528Z"
+                            fill="#7F7F7F" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.855286 8.51528C0.485086 8.14508 0.485086 7.54487 0.855286 7.17467L6.88805 1.14191C7.25825 0.771709 7.85846 0.771709 8.22866 1.14191C8.59886 1.51211 8.59886 2.11232 8.22866 2.48252L2.86621 7.84498L8.22866 13.2074C8.59886 13.5776 8.59886 14.1778 8.22866 14.548C7.85846 14.9182 7.25824 14.9182 6.88804 14.548L0.855286 8.51528Z"
+                            fill="#7F7F7F" />
+                        </svg>
+                    </a>
+                    <ul class="page-nav__list">
+                        <li class="page-nav__item"> <a class="page-nav__link is-active" href="#">1</a>
+                        </li>
+                        <li class="page-nav__item"> <a class="page-nav__link" href="#">2</a>
+                        </li>
+                        <li class="page-nav__item"> <a class="page-nav__link" href="#">3</a>
+                        </li>
+                    </ul>
+                    <a class="page-nav__link is-next" href="#">
+                        <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.38324 6.48496C8.75344 6.85516 8.75344 7.45538 8.38324 7.82558L2.35048 13.8583C1.98028 14.2285 1.38007 14.2285 1.00987 13.8583C0.639665 13.4881 0.639665 12.8879 1.00987 12.5177L6.37232 7.15527L1.00986 1.79282C0.639664 1.42262 0.639664 0.822403 1.00986 0.452203C1.38007 0.0820019 1.98028 0.0820019 2.35048 0.452203L8.38324 6.48496Z"
+                            fill="#7F7F7F" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5988 6.48496C16.969 6.85516 16.969 7.45538 16.5988 7.82558L10.5661 13.8583C10.1959 14.2285 9.59564 14.2285 9.22544 13.8583C8.85524 13.4881 8.85524 12.8879 9.22544 12.5177L14.5879 7.15527L9.22544 1.79282C8.85524 1.42262 8.85524 0.822403 9.22544 0.452202C9.59564 0.0820013 10.1959 0.0820013 10.5661 0.452202L16.5988 6.48496Z"
+                            fill="#7F7F7F" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+
+{% endblock content %}

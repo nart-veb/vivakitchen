@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="main-header">
+            <div class="main-header__container container">
+                <div class="breadcrumbs main-header__breadcrumbs">
+                    <ul class="breadcrumbs__list">
+                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="#">главная</a>
+                        </li>
+                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="#">Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+                <h1 class="main-header__title">Контакты</h1>
+
+            </div>
+        </div>
+        <main class="main page__main">
+            <div class="main__container container">
+                <div class="chars main__chars">
+                    <div class="chars__row">
+                        <div class="chars__title"> <span>наши соцсети</span>
+                        </div>
+                        <div class="chars__data">
+                            <div class="contacts-list chars__contacts">
+                                <div class="contacts-list__item">
+                                    <img class="contacts-list__icon" src="/static/img/general/icons/wab.svg" alt="">
+                                    <div class="contacts-list__data">
+                                        <div class="contacts-list__label">Whatsapp</div><a class="contacts-list__link" href="#">+7(918) 207-33-88</a>
+                                    </div>
+                                </div>
+                                <div class="contacts-list__item">
+                                    <img class="contacts-list__icon" src="/static/img/general/icons/ib.svg" alt="">
+                                    <div class="contacts-list__data">
+                                        <div class="contacts-list__label">Instagram</div><a class="contacts-list__link" href="#">@vivakitchen_sochi</a>
+                                    </div>
+                                </div>
+                                <div class="contacts-list__item">
+                                    <img class="contacts-list__icon" src="/static/img/general/icons/fb.svg" alt="">
+                                    <div class="contacts-list__data">
+                                        <div class="contacts-list__label">Facebook</div><a class="contacts-list__link" href="#">Viva Kitchen Sochi</a>
+                                    </div>
+                                </div>
+                                <div class="contacts-list__item">
+                                    <img class="contacts-list__icon" src="/static/img/general/icons/eb.svg" alt="">
+                                    <div class="contacts-list__data">
+                                        <div class="contacts-list__label">Mail</div><a class="contacts-list__link" href="mailto:sochi@viva-kitchen.com">sochi@viva-kitchen.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chars__row">
+                        <div class="chars__title"> <span>телефон</span>
+                        </div>
+                        <div class="chars__data">
+                            <div class="contacts-list chars__contacts">
+                                <div class="contacts-list__item">
+                                    <img class="contacts-list__icon" src="/static/img/general/icons/tb.svg" alt="">
+                                    <div class="contacts-list__data">
+                                        <div class="contacts-list__label">офис</div><a class="contacts-list__link" href="tel:+79182073388">+7(918) 207-33-88</a>
+                                    </div>
+                                </div>
+                                <div class="contacts-list__item">
+                                    <img class="contacts-list__icon" src="/static/img/general/icons/tb.svg" alt="">
+                                    <div class="contacts-list__data">
+                                        <div class="contacts-list__label">отдел продаж</div><a class="contacts-list__link" href="tel:+79182073388">+7(918) 207-33-88</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chars__row">
+                        <div class="chars__title"> <span>наш адрес</span>
+                        </div>
+                        <div class="chars__data">
+                            <div class="contacts-list chars__contacts">
+                                <div class="contacts-list__item">
+                                    <img class="contacts-list__icon" src="/static/img/general/icons/mb.svg" alt="">
+                                    <div class="contacts-list__data"><a class="contacts-list__link is-red" href="#">г. Сочи, ул. Конституции СССР, 32</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <iframe src="https://yandex.ru/map-widget/v1/?from=tabbar&indoorLevel=1&ll=39.724903%2C43.596005&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NzUzMjUzMBJr0KDQvtGB0YHQuNGPLCDQmtGA0LDRgdC90L7QtNCw0YDRgdC60LjQuSDQutGA0LDQuSwg0KHQvtGH0LgsINGD0LvQuNGG0LAg0JrQvtC90YHRgtC40YLRg9GG0LjQuCDQodCh0KHQoCwgMzIiCg1O5h5CFU9iLkI%2C&source=serp_navig&z=17"
+                        width="100%" height="305" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+{% endblock content %}

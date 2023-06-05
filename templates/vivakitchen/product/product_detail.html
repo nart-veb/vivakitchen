@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+       <div class="main-header">
+            <div class="main-header__container container">
+                <div class="breadcrumbs main-header__breadcrumbs">
+                    <ul class="breadcrumbs__list">
+                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="/">главная</a>
+                        </li>
+                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="../">{{title}}</a>
+                        </li>
+                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="#">{{product.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <main class="main page__main">
+            <div class="main__container container">
+                <div class="detail main__detail">
+                    <div class="detail__header">
+                        <h1 class="detail__title">{{header}} {{product.name}}</h1>
+                        <div class="detail__actions">
+                            <div class="detail__caption">Современный уют в классике</div>
+                            <div class="detail__buttons"> <a class="detail__plan js-gallery-box" href="{{product.image.url}}">чертеж</a><a class="detail__share" href="#">хочу купить</a>
+                            </div>
+                        </div>
+                        <div class="detail__price">{% if product.price %} от {{product.price}} рублей {% else %} Цена за товар не указана {% endif %} </div>
+                    </div>
+                    <div class="detail__body">
+                        <div class="splide js-detail-slider">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    {% for img in image_list %}
+                                             <li class="splide__slide">
+                                                <img src="{{img.image.url}}" alt="">
+                                             </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="chars detail__chars">
+                            {% if characteristic_list %}
+                            <div class="chars__row">
+                                <div class="chars__title"> <span>характеристики</span>
+                                </div>
+                                <div class="chars__data">
+                                    {% for characteristic in characteristic_list %}
+                                    <div class="chars__item">
+                                        <div class="chars__caption">{{characteristic.property}}</div>
+                                        <div class="chars__values">
+                                            <div class="chars__value">{{characteristic.value}}
+                                                <div class="helper tooltip-top-right chars__helper" data-tooltip="tooltip info" style="display:none;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="chars__row">
+                                <div class="chars__title"> <span>описание</span>
+                                </div>
+                                <div class="chars__data">
+                                    <p>{{product.description|safe}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+{% endblock content %}
