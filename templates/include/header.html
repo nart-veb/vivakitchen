@@ -1,4 +1,7 @@
 {% load static %}
+{% load static nav_tag %}
+{% load static shownav_tag %}
+
 <header class="page-header page__header">
             <div class="page-header__container container">
                 <a class="page-header__logo" href="{% url 'index' %}">
@@ -26,9 +29,9 @@
                             </ul>
                             <div class="socials-small page-header__socials">
                                 <a class="socials-small__link" href="#">
-                                    <img src="{% static 'img/general/icons/wa.svg' %}" alt="" />
+                                    <img src="{% static 'img/general/icons/wa.svg' %}" alt="https://wa.me/+79182073388?text=Здравствуйте. Меня интересует ..." />
                                 </a>
-                                <a class="socials-small__link" href="#">
+                                <a class="socials-small__link" href="https://www.instagram.com/vivakitchensochi/">
                                     <img src="{% static 'img/general/icons/inst.svg' %}" alt="" />
                                 </a>
                                 <a class="socials-small__link" href="#">
@@ -38,34 +41,39 @@
                         </div>
                         <div class="page-header__actions">
                             <ul class="header-menu page-header__menu">
-                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/kitchen/' %}is-active{% endif %}" href="{% url 'kitchen' %}">кухни</a>
-                                </li>
-                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/wardrobes/' %}is-active{% endif %}"  href="{% url 'wardrobes' %}">шкафы</a>
-                                </li>
-                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/bathroom/' %}is-active{% endif %}"  href="{% url 'bathroom' %}">ванные</a>
-                                </li>
-                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/sofas/' %}is-active{% endif %}"  href="{% url 'sofas' %}">диваны</a>
-                                </li>
-                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/garden/' %}is-active{% endif %}"  href="{% url 'garden' %}">садовая мебель</a>
-                                </li>
-                                <li class="header-menu__item">
-                                    <div class="header-menu__link {% if request.path  == '/light/lamp/' or request.path  == '/light/chandelier/' or request.path  == '/light/system/' or request.path  == '/light/ceiling/' %}is-active{% endif %}">свет</div>
-                                    <div class="header-menu__dropdown">
+
+                                 {% get_nav as navs %}
+                                    {% for nav in navs %}
+                                        {% if nav.slug == '' %}
+                                            <li class="header-menu__item">
+                                            <div class="header-menu__link">{{nav.name}}</div>
+                                            <div class="header-menu__dropdown">
                                         <ul>
-                                            <li> <a class="{% if request.path == '/light/chandelier/' %}is-active{% endif %}" href="{% url 'chandelier' %}">Люстры</a>
+                                            {% get_shownav as shownavs %}
+                                            {% for shownav in shownavs %}
+                                            {% if shownav.nav.name == nav.name %}
+                                             <li>
+                                                <a href="/{{shownav.slug}}/">{{shownav.name}}</a>
                                             </li>
-                                            <li> <a class="{% if request.path == '/light/lamp/' %}is-active{% endif %}" href="{% url 'lamp' %}">Светильники</a>
-                                            </li>
-                                            <li> <a class="{% if request.path == '/light/system/' %}is-active{% endif %}" href="{% url 'system' %}">Трековые системы</a>
-                                            </li>
-                                            <li> <a class="{% if request.path == '/light/ceiling/' %}is-active{% endif %}" href="{% url 'ceiling' %}">Потолочный свет</a>
-                                            </li>
+                                            {% endif %}
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/portfolio/' %}is-active{% endif %}"  href="{% url 'portfolio' %}">портфолио</a>
+                                {% endif %}
+                                {% endfor %}
+
+
+                                {% for nav in navs %}
+                                {% if nav.slug != '' %}
+                                <li class="header-menu__item"> <a class="header-menu__link" href="/{{nav.slug}}/">{{nav.name}}</a>
                                 </li>
-                            </ul><a class="button is-small page-header__button" href="#">Заказать проект </a>
+                                {% endif %}
+                                {% endfor %}
+
+
+
+                            </ul><a class="button is-small page-header__button" href="https://wa.me/79182073388?text=Здравствуйте,%20мне%20хотелось%20бы%20заказать%20у%20Вас%20проект..">Заказать проект </a>
                         </div>
                     </div>
                 </div>

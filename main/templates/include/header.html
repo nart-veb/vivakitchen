@@ -1,0 +1,78 @@
+{% load static %}
+{% load static numbers_tag %}
+<header class="page-header page__header">
+            <div class="page-header__container container">
+                <a class="page-header__logo" href="{% url 'index' %}">
+                    <img src="{% static 'img/general/logo.png' %}" alt="" />
+                </a>
+                <div class="page-header__mobile-btn"></div>
+                <div class="page-header__data">
+                    <div class="page-header__inner">
+                        <div class="page-header__bar">
+                            <ul class="bar-menu page-header__bar-menu">
+                                <li class="bar-menu__item"> <a class="bar-menu__link {% if request.path == '/promotion/' %}is-active{% endif %}" href="{% url 'promotion' %}">акции</a>
+                                </li>
+                                <li class="bar-menu__item"> <a class="bar-menu__link {% if request.path == '/buyer/' %}is-active{% endif %}" href="{% url 'buyer' %}">покупателям</a>
+                                </li>
+                                <li class="bar-menu__item"> <a class="bar-menu__link {% if request.path == '/contact/' %}is-active{% endif %}" href="{% url 'contact' %}">контакты</a>
+                                </li>
+                                <li class="bar-menu__item"> <a class="bar-menu__link {% if request.path == '/about/' %}is-active{% endif %}" href="{% url 'about' %}">о нас</a>
+                                </li>
+                            </ul>
+                            <ul class="info-list page-header__info-list">
+                                <li class="info-list__item"> <a class="info-list__link" href="#">Сочи, ул. Конституции СССР, 32 </a>
+                                </li>
+                                <li class="info-list__item"> <a class="info-list__link" href="tel:+791820733-88">+7(918) 207-33-88</a>
+                                </li>
+                            </ul>
+                            <div class="socials-small page-header__socials">
+                                <a class="socials-small__link" href="#">
+                                    <img src="{% static 'img/general/icons/wa.svg' %}" alt="https://wa.me/+79182073388?text=Здравствуйте. Меня интересует ..." />
+                                </a>
+                                <a class="socials-small__link" href="https://www.instagram.com/vivakitchensochi/">
+                                    <img src="{% static 'img/general/icons/inst.svg' %}" alt="" />
+                                </a>
+                                <a class="socials-small__link" href="#">
+                                    <img src="{% static 'img/general/icons/tg.svg' %}" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="page-header__actions">
+                            <ul class="header-menu page-header__menu">
+                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/kitchen/' %}is-active{% endif %}" href="{% url 'kitchen' %}">кухни</a>
+                                </li>
+                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/wardrobes/' %}is-active{% endif %}"  href="{% url 'wardrobes' %}">шкафы</a>
+                                </li>
+                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/bathroom/' %}is-active{% endif %}"  href="{% url 'bathroom' %}">ванные</a>
+                                </li>
+                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/sofas/' %}is-active{% endif %}"  href="{% url 'sofas' %}">диваны</a>
+                                </li>
+                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/garden/' %}is-active{% endif %}"  href="{% url 'garden' %}">садовая мебель</a>
+                                </li>
+                                <li class="header-menu__item">
+                                    <div class="header-menu__link {% if request.path  == '/light/lamp/' or request.path  == '/light/chandelier/' or request.path  == '/light/system/' or request.path  == '/light/ceiling/' %}is-active{% endif %}">свет</div>
+                                    <div class="header-menu__dropdown">
+                                        <ul>
+                                            <li> <a class="{% if request.path == '/light/chandelier/' %}is-active{% endif %}" href="{% url 'chandelier' %}">Люстры</a>
+                                            </li>
+                                            <li> <a class="{% if request.path == '/light/lamp/' %}is-active{% endif %}" href="{% url 'lamp' %}">Светильники</a>
+                                            </li>
+                                            <li> <a class="{% if request.path == '/light/system/' %}is-active{% endif %}" href="{% url 'system' %}">Трековые системы</a>
+                                            </li>
+                                            <li> <a class="{% if request.path == '/light/ceiling/' %}is-active{% endif %}" href="{% url 'ceiling' %}">Потолочный свет</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="header-menu__item"> <a class="header-menu__link {% if request.path == '/portfolio/' %}is-active{% endif %}"  href="{% url 'portfolio' %}">портфолио</a>
+                                </li>
+                            </ul><a class="button is-small page-header__button" href="https://wa.me/79182073388?text=Здравствуйте,%20мне%20хотелось%20бы%20заказать%20у%20Вас%20проект..">Заказать проект </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+

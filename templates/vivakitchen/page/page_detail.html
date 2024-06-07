@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+       <div class="main-header">
+            <div class="main-header__container container">
+                <div class="breadcrumbs main-header__breadcrumbs">
+                    <ul class="breadcrumbs__list">
+                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="/">главная</a>
+                        </li>
+<!--                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="#">интерьер и мебель </a>-->
+<!--                        </li>-->
+                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="#">{{page.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <main class="main page__main">
+            <div class="main__container container">
+                <div class="detail main__detail">
+                    <div class="detail__header">
+                        <h1 class="detail__title">{{page.name}}</h1>
+                        <div class="detail__actions">
+                            <div class="detail__caption" style="display:none">Современный уют в классике</div>
+                            <div class="detail__buttons"> <a class="detail__plan js-gallery-box" href="http://www.abxaz-konsalting.ru/bitrix/templates/consultant/img/viva.jpg">хочу купить</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                      <swiper-container class="mySwiper" space-between="30" slides-per-view="auto" pagination="true"
+    pagination-clickable="true">
+                                    {% for img in image_list %}
+                              <swiper-slide><img src="{{img.image.url}}" alt=""></swiper-slide>
+                                    {% endfor %}
+
+  </swiper-container>
+
+                    <div class="detail__body">
+                        <div class="splide js-detail-slider" style="display:none;">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+
+                                    <li class="splide__slide">
+                                                <img src="https://viva-kitchen.com/images/interior/stena-panel/stena-panel-006.jpg" alt="">
+                                    </li>
+                                    <li class="splide__slide">
+                                                <img src="https://viva-kitchen.com/images/interior/stena-panel/stena-panel-002.jpg" alt="">
+                                    </li>
+                                    <li class="splide__slide">
+                                                <img src="https://viva-kitchen.com/images/interior/stena-panel/stena-panel-003.jpg" alt="">
+                                    </li>
+                                    <li class="splide__slide">
+                                                <img src="https://viva-kitchen.com/images/interior/stena-panel/stena-panel-005.jpg" alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                            <div class="chars__row" style="margin-top:50px;">
+                                <div class="chars__title"> <span>описание</span>
+                                </div>
+                                <div class="chars__data">
+                                    <p>{{ page.description|linebreaksbr }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+<style>
+swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+    }
+
+    swiper-slide {
+      width: 80%;
+    }
+
+    swiper-slide:nth-child(2n) {
+      width: 60%;
+    }
+
+    swiper-slide:nth-child(3n) {
+      width: 40%;
+    }
+  </style>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: "auto",
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+
+{% endblock content %}

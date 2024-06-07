@@ -22,58 +22,7 @@
                                     </div>
                                 </div>
                             </li>
-                            {% endfor %}
-                            <li class="splide__slide">
-                                <div class="card">
-                                    <div class="card__data">
-                                        <h5 class="card__title">только у нас! <span>толщина фасада 18 см</span></h5><a class="button card__button" href="#">подобрать фасад</a>
-                                    </div>
-                                    <div class="card__photo img-cover">
-                                        <img src="{% static 'img/general/card/2.jpg' %}" alt="">
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="splide__slide">
-                                <div class="card">
-                                    <div class="card__data">
-                                        <h5 class="card__title">ДОСТАВКА И СБОРКА <span>БЕСПЛАТНО!</span></h5><a class="button card__button" href="#">посмотреть коллекцию</a>
-                                    </div>
-                                    <div class="card__photo img-cover">
-                                        <img src="{% static 'img/general/card/3.jpg' %}" alt="">
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="splide__slide">
-                                <div class="card">
-                                    <div class="card__data">
-                                        <h5 class="card__title is-small">Мы - официальные диллерры белорусской мебели vivakitchen</h5>
-                                        <div class="card__caption">100% КАЧЕСТВО ВЫБОРА!</div><a class="button card__button" href="#">посмотреть каталог</a>
-                                    </div>
-                                    <div class="card__photo img-cover">
-                                        <img src="{% static 'img/general/card/4.jpg' %}" alt="">
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="splide__slide">
-                                <div class="card">
-                                    <div class="card__data">
-                                        <h5 class="card__title">экологически чистые материалы</h5><a class="button card__button" href="#">посмотреть каталог</a>
-                                    </div>
-                                    <div class="card__photo img-cover">
-                                        <img src="{% static 'img/general/card/5.jpg' %}" alt="">
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="splide__slide">
-                                <div class="card">
-                                    <div class="card__data">
-                                        <h5 class="card__title">новинка! <span>керамические фасады</span></h5><a class="button card__button" href="#">выбрать фасады</a>
-                                    </div>
-                                    <div class="card__photo img-cover">
-                                        <img src="{% static 'img/general/card/6.jpg' %}" alt="">
-                                    </div>
-                                </div>
-                            </li>
+                            {% endfor %}          
                         </ul>
                     </div>
                 </div>
@@ -112,7 +61,7 @@
                             <li class="splide__slide">
                                 <div class="card">
                                     <div class="card__data is-short">
-                                        <h5 class="card__title">Кухня <br> {{furniture.name}}</h5><a class="card__link" href="kitchen/{{furniture.slug}}">посмотреть проект </a>
+                                        <h5 class="card__title">{% if furniture.nav %}{{furniture.nav}} {% else %} {{furniture.show_nav}} {% endif %} <br> {{furniture.name}}</h5><a class="card__link" href="portfolio/{{furniture.slug}}">посмотреть проект</a>
                                         {% if furniture.value_left or furniture.value_right %}
                                         <div class="card__list">
                                             <div class="card__item">
@@ -127,7 +76,7 @@
 
                                     </div>
                                     <div class="card__photo img-cover is-large">
-                                        <img src="{{furniture.avatar.url}}" alt="">
+                                        <img src="media/{{furniture.avatar}}" alt="">
                                     </div>
                                 </div>
                             </li>
@@ -194,7 +143,7 @@
         <section class="section">
             <div class="section__container container">
                 <div class="section__header">
-                    <h2 class="section__title">каталог кухонь</h2>
+                    <h2 class="section__title">Новинки</h2>
                 </div>
                 <div class="splide js-catalog-slider is-arrows-top">
                     <div class="splide__track">
@@ -202,17 +151,22 @@
                             {% for kitchen_vip in product_vip_list %}
                             <li class="splide__slide">
                                 <div class="catalog-card section__catalog-card">
-                                    <a class="catalog-card__photo img-cover" href="kitchen/{{kitchen_vip.slug}}">
-                                        <img src="{{kitchen_vip.avatar.url}}" alt="">
-                                    </a><a class="catalog-card__title" href="#">{{kitchen_vip.name}}</a>
-                                    <div class="catalog-card__caption">от {{kitchen_vip.price}} руб</div>
+                                    <a class="catalog-card__photo img-cover" href="{{kitchen_vip.show_nav.slug}}{{kitchen_vip.nav.slug}}/{{kitchen_vip.slug}}">
+                                        <img src="media/{{kitchen_vip.avatar}}" alt="">
+
+                                <div class="catalog-card__badge">{% if kitchen_vip.nav %}{{kitchen_vip.nav}} {% else %} {{kitchen_vip.show_nav}} {% endif %}</div>
+
+                                {% if kitchen_vip.brand %}<div class="catalog-card__badge" style="position:relative;background-color:#32B41D;background:none;font-size:20px;">{{kitchen_vip.brand}}</div>{% endif %}
+
+                                    </a><a class="catalog-card__title" href="{{kitchen_vip.show_nav.slug}}{{kitchen_vip.nav.slug}}/{{kitchen_vip.slug}}">{{kitchen_vip.name}} {% if kitchen_vip.collection %}<span style="color:#7f7f7f; font-size:16px;text-decoration:underline; margin-left:10px;">{{kitchen_vip.collection}}</span>{% endif %}</a>
+
                                 </div>
                             </li>
                             {% endfor %}
                         </ul>
                     </div>
                 </div>
-                <div class="section__footer"> <a class="button is-outline section__button" href="#">посмотреть каталог </a>
+                <div class="section__footer"> <a class="button is-outline section__button" href="kitchen/">посмотреть каталог </a>
                 </div>
             </div>
         </section>
@@ -263,42 +217,20 @@
                     <div class="process__inner">
                         <div class="process__text">Изготовление кухни-это сложный многоступенчатый процесс. Но для наших клиентов-это всего четыре простых шага в сопровождени персонального дизайнера</div>
                         <div class="process__data">
+
+
+
+{% for process in  process_list %}
                             <div class="process__card">
                                 <div class="process__card-header">
-                                    <div class="process__card-title">1. Бесплатный дизайн-проект</div>
+                                    <div class="process__card-title">{{process.name}}</div>
                                     <div class="process__card-circle"></div>
                                 </div>
                                 <div class="process__card-body">
-                                    <p>Разработаем индивидуальный проект в удобном вам формате: онлайн-проектирование, встреча в студии или выезд дизайнера на объект</p><a class="button process__card-button" href="#">заказать проект </a>
+                                    <p>{{process.description}}</p><a class="button process__card-button" href="https://wa.me/79182073388?text=Здравствуйте,%20мне%20хотелось%20бы%20заказать%20у%20Вас%20проект..">заказать проект </a>
                                 </div>
                             </div>
-                            <div class="process__card">
-                                <div class="process__card-header">
-                                    <div class="process__card-title">2. Бесплатный замер</div>
-                                    <div class="process__card-circle"></div>
-                                </div>
-                                <div class="process__card-body">
-                                    <p>Разработаем индивидуальный проект в удобном вам формате: онлайн-проектирование, встреча в студии или выезд дизайнера на объект</p><a class="button process__card-button" href="#">заказать проект</a>
-                                </div>
-                            </div>
-                            <div class="process__card">
-                                <div class="process__card-header">
-                                    <div class="process__card-title">3. Производство кухни</div>
-                                    <div class="process__card-circle"></div>
-                                </div>
-                                <div class="process__card-body">
-                                    <p>Разработаем индивидуальный проект в удобном вам формате: онлайн-проектирование, встреча в студии или выезд дизайнера на объект</p><a class="button process__card-button" href="#">заказать проект</a>
-                                </div>
-                            </div>
-                            <div class="process__card">
-                                <div class="process__card-header">
-                                    <div class="process__card-title">4. Доставка и сборка</div>
-                                    <div class="process__card-circle"></div>
-                                </div>
-                                <div class="process__card-body">
-                                    <p>Разработаем индивидуальный проект в удобном вам формате: онлайн-проектирование, встреча в студии или выезд дизайнера на объект</p><a class="button process__card-button" href="#">заказать проект</a>
-                                </div>
-                            </div>
+{% endfor %}
                         </div>
                     </div>
                 </div>

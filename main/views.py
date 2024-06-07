@@ -3,158 +3,21 @@ from .functions import *
 from django.views.generic.base import View
 from .models import *
 
+
 class IndexView(View):
     # главная страница
     def get(self, request):
         slide = Slider.objects.all()
-        product_portfolio = Product.objects.filter(portfolio=1, chapter="KITCHEN")
-        product_vip = Product.objects.filter(kitchen="1", chapter="KITCHEN")
+        product_portfolio = Product.objects.filter(portfolio=1)
+        product_vip = Product.objects.filter(kitchen="1")
+        process = Process.objects.all()
         context = {
             "slide_list": slide,
+            "process_list": process,
             "product_portfolio_list": product_portfolio,
             "product_vip_list": product_vip,
         }
         return render(request, 'vivakitchen/index.html', context)
-
-class Kitchen(View):
-    # кухни
-    def get_index(request):
-        context = product_index("KITCHEN", "product_list")
-        context["title"] = "кухни"
-        context["header"] = "каталог кухонь"
-        context["description"] = "Уютная красивая кухня с современной мебелью может стать любимым местом отдыха для любой семьи, ведь так приятно провести время с близкими в расслабляющей обстановке. Если же гарнитур не только эстетичен, но и удобен в эксплуатации, практичен, то хозяйки с большим удовольствием проводят время на кухне, радуя семью новыми кулинарными шедеврами."
-        return render(request, "vivakitchen/product/product_index.html", context)
-
-    def get_detail(request, slug):
-        context = product_detail(slug, "product")
-        context["title"] = "кухни"
-        context["header"] = "кухня"
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_detail.html", context)
-
-    # def get_absolute_url(self):
-    #     return reverse('product-detail', kwargs={'slug': self.slug}) # new
-
-
-
-class Wardrobes(View):
-    # шкафы лист
-    def get_index(request):
-        context = product_index("CABINETS", "product_list")
-        context["title"] = "шкафы"
-        context["header"] = "каталог шкафов"
-        context["description"] = "Уютная красивая кухня с современной мебелью может стать любимым местом отдыха для любой семьи, ведь так приятно провести время с близкими в расслабляющей обстановке. Если же гарнитур не только эстетичен, но и удобен в эксплуатации,практичен, то хозяйки с большим удовольствием проводят время на кухне, радуя семью новыми кулинарными шедеврами."
-        return render(request, "vivakitchen/product/product_index.html", context)
-
-    def get_detail(request, slug):
-        context = product_detail(slug, "product")
-        context["title"] = "шкафы"
-        context["header"] = "шкаф"
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_detail.html", context)
-
-    # def get_absolute_url(self):
-    #     return reverse('wardrobes-detail', kwargs={'slug': self.slug}) # new
-
-
-
-class Bathroom(View):
-    # ванны лист
-    def get_index(request):
-        context = product_index("BATHROOM", "product_list")
-        context["title"] = "ванные"
-        context["header"] = "ванные на заказ"
-        context["description"] = "Каталог мебели для ванных Viva Kitchen — это набор идеальных решений по максимально эффективному использованию пространства ванных комнат. Разнообразие различных тумб, пеналов, подвесных шкафов, зеркал, настенных полок и аксессуаров позволяет создавать уникальные композиции, всегда практичные и эстетически привлекательные."
-        return render(request, "vivakitchen/product/product_index.html", context)
-
-    def get_detail(request, slug):
-        context = product_detail(slug, "product")
-        context["title"] = "ванные"
-        context["header"] = "ванна"
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_detail.html", context)
-
-    # def get_absolute_url(self):
-    #     return reverse('bathroom-detail', kwargs={'slug': self.slug})
-
-
-class Sofas(View):
-    # диваны лист
-    def get_index(request):
-        context = product_index("SOFAS", "product_list")
-        context["title"] = "диваны"
-        context["header"] = "каталог диванов"
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_index.html", context)
-
-    def get_detail(request, slug):
-        context = product_detail(slug, "product")
-        context["title"] = "диваны"
-        context["header"] = "диван"
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_detail.html", context)
-
-    # def get_absolute_url(self):
-    #     return reverse('sofas-detail', kwargs={'slug': self.slug})  # new
-
-class Garden(View):
-    # мебель лист
-    def get_index(request):
-        context = product_index("GARDEN_FURNITURE", "product_list")
-        context["title"] = "мебель"
-        context["header"] = "Мебель ждя вашего дома"
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_index.html", context)
-
-    def get_detail(request, slug):
-        context = product_detail(slug, "product")
-        context["title"] = "мебель"
-        context["header"] = ""
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_detail.html", context)
-
-    # def get_absolute_url(self):
-    #     return reverse('sofas-detail', kwargs={'slug': self.slug})
-
-
-
-class Light():
-    # свет лист
-    def get_chandelier(request):
-        context = product_index("CHANDELIER", "product_list")
-        context["title"] = "люстры"
-        context["header"] = "Каталог люстр"
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_index.html", context)
-
-    def get_lamp(request):
-        context = product_index("LAMP", "product_list")
-        context["title"] = "светильники"
-        context["header"] = "Каталог светильников"
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_index.html", context)
-
-    def get_system(request):
-        context = product_index("ALARM_SYSTEMS", "product_list")
-        context["title"] = "трековые системы"
-        context["header"] = "Каталог трековых систем"
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_index.html", context)
-
-    def get_ceiling(request):
-        context = product_index("CEILING_LIGHT", "product_list")
-        context["title"] = "потолочный свет"
-        context["header"] = "Каталог потолочного света"
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_index.html", context)
-
-    def get_detail(request, slug):
-        context = product_detail(slug, "product")
-        context["title"] = "свет"
-        context["header"] = ""
-        context["description"] = ""
-        return render(request, "vivakitchen/product/product_detail.html", context)
-
 
 
 
@@ -176,13 +39,18 @@ class Portfolio(View):
 
 
 
+
 class Promotion(View):
     def get(self, request):
         return render(request, 'vivakitchen/promotion.html')
 
 class Buyer(View):
     def get(self, request):
-        return render(request, 'vivakitchen/buyer.html')
+        process = Process.objects.all()
+        context = {
+            "process_list": process,
+        }
+        return render(request, 'vivakitchen/buyer.html', context)
 
 class Contact(View):
     def get(self, request):
@@ -191,5 +59,65 @@ class Contact(View):
 class About(View):
     def get(self, request):
         return render(request, 'vivakitchen/about.html')
+
+
+class ListIndex(View):
+    # мебель лист
+    def get_index(request, slug, name_list=None):
+        if Nav.objects.filter(slug=slug):
+            id_slug = Nav.objects.get(slug=slug)
+            if Page.objects.filter(nav=id_slug):
+                page = Page.objects.get(nav=id_slug)
+                image = ImgPage.objects.filter(page=page)
+                return render(request, "vivakitchen/page/page_detail.html", {"page": page, "image_list": image})
+            elif Product.objects.filter(nav=id_slug):
+                product = Product.objects.filter(nav=id_slug)
+                context = {"product_list": product, "name_list": product, "title": id_slug, "header": id_slug,
+                           "description": ""}
+                return render(request, "vivakitchen/product/product_index.html", context)
+            else:
+                return render(request, "vivakitchen/inactive.html", {'nav': id_slug.name})
+
+        elif ShowNav.objects.filter(slug=slug):
+            id_slug = ShowNav.objects.get(slug=slug)
+            if Page.objects.filter(show_nav=id_slug):
+                page = Page.objects.get(show_nav=id_slug)
+                image = ImgPage.objects.filter(page=page)
+                return render(request, "vivakitchen/page/page_detail.html", {"page": page, "image_list": image})
+            elif Product.objects.filter(show_nav=id_slug):
+                product = Product.objects.filter(show_nav=id_slug)
+                context = {"product_list": product, "name_list": product, "title": id_slug, "header": id_slug,
+                           "description": ""}
+                return render(request, "vivakitchen/product/product_index.html", context)
+            else:
+                return render(request, "vivakitchen/inactive.html", {'nav': id_slug.name})
+        else:
+            return render(request, "vivakitchen/none.html")
+
+
+    def get_detail(request, nav, slug,):
+        product = Product.objects.get(slug=slug)
+        if (product.nav is None and product.show_nav.slug == nav) or (product.show_nav is None and product.nav.slug == nav):
+            characteristic = Characteristic.objects.filter(kitchen=product)
+            image = Img.objects.filter(product=product)
+            context = {
+                "product": product,
+                "image_list": image,
+                "characteristic_list": characteristic,
+            }
+            if product.nav:
+                product_list = Product.objects.filter(nav=product.nav).exclude(slug=product.slug).order_by('name')[:3]
+                context["title"] = product.nav
+            elif product.show_nav:
+                product_list = Product.objects.filter(show_nav=product.show_nav).exclude(slug=product.slug).order_by('name')[:3]
+                context["title"] = product.show_nav
+            context["product_list"] = product_list
+            context["header"] = ""
+            context["description"] = ""
+            return render(request, "vivakitchen/product/product_detail.html", context)
+        else:
+            return render(request, "vivakitchen/none.html")
+
+
 
 

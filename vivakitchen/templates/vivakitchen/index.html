@@ -1,0 +1,325 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<!-- section-->
+        <section class="section is-border-top">
+            <div class="section__container container">
+                <div class="splide js-card-slider">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            {% for slide in slide_list %}
+                            <li class="splide__slide">
+                                <div class="card">
+                                    <div class="card__data">
+                                        <h5 class="card__title">{{slide.name}}<span>{{slide.name_b}}</span></h5><a class="button card__button" href="{{slide.path_a}}">{{slide.description_a}}</a>
+                                    </div>
+                                    <div class="card__photo img-cover">
+                                        <img src="{{slide.image.url}}" alt="">
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section-->
+        <!-- section-->
+        <section class="section is-border-top">
+            <div class="section__container container">
+                <div class="card is-secondary">
+                    <div class="card__data">
+                        <h6 class="card__title is-thin">кухни с итальянским акцентом</h6>
+                    </div>
+                    <div class="card__info">
+                        <h6 class="card__title">Кухни на заказ от Vivakitchen</h6>
+                        <div class="card__text">Торговая марка ViVakitchen представляет мебельные решения высокотехнологичного исполнения в неповторимом стиле и безупречного качества. Мы устойчиво развивающаяся и постоянно обновляющаяся компания, учитывающая изменения, тенденции
+                            и риски, происходящие во внешнем окружении.</div><a class="button card__button" href="#">заказать кухню</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section-->
+        <!-- section-->
+
+
+        <section class="section">
+            <div class="section__container container">
+                <div class="section__header">
+                    <h2 class="section__title">портфолио</h2>
+                </div>
+
+                <div class="splide js-card-slider is-arrows-bottom">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            {% for furniture in  product_portfolio_list %}
+                            <li class="splide__slide">
+                                <div class="card">
+                                    <div class="card__data is-short">
+                                        <h5 class="card__title">Кухня <br> {{furniture.name}}</h5><a class="card__link" href="kitchen/{{furniture.slug}}">посмотреть проект </a>
+                                        {% if furniture.value_left or furniture.value_right %}
+                                        <div class="card__list">
+                                            <div class="card__item">
+                                                {{furniture.value_left}}
+                                            </div>
+
+                                            <div class="card__item">
+                                                {{furniture.value_right}}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+
+                                    </div>
+                                    <div class="card__photo img-cover is-large">
+                                        <img src="media/{{furniture.avatar}}" alt="">
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- end section-->
+        <!-- section-->
+        <section class="section">
+            <div class="section__container container">
+                <div class="section__header">
+                    <h2 class="section__title">коллекция</h2>
+                </div>
+                <div class="advants section__advants">
+                    <div class="advants-card advants__card">
+                        <img class="advants-card__icon" src="{% static 'img/general/icons/heart.svg' %}" alt="">
+                        <div class="advants-card__data">
+                            <div class="advants-card__title">Бесплатный проект</div>
+                            <div class="advants-card__caption">с покупкой кухни</div>
+                        </div>
+                    </div>
+                    <div class="advants-card advants__card">
+                        <img class="advants-card__icon" src="{% static 'img/general/icons/rub.svg' %}" alt="">
+                        <div class="advants-card__data">
+                            <div class="advants-card__title">Рассрочка</div>
+                            <div class="advants-card__caption">без переплат</div>
+                        </div>
+                    </div>
+                    <div class="advants-card advants__card">
+                        <img class="advants-card__icon" src="{% static 'img/general/icons/percent.svg' %}" alt="">
+                        <div class="advants-card__data">
+                            <div class="advants-card__title">Выгодно для Вас</div>
+                            <div class="advants-card__caption">скидки при заказе</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section__grid">
+                    <div class="catalog-card section__catalog-card">
+                        <a class="catalog-card__photo img-cover" href="#">
+                            <img src="{% static 'img/general/catalog/1.jpg' %}" alt="">
+                        </a><a class="catalog-card__title" href="#"> КУХНИ</a>
+                    </div>
+                    <div class="catalog-card section__catalog-card">
+                        <a class="catalog-card__photo img-cover" href="#">
+                            <img src="{% static 'img/general/catalog/2.jpg' %}" alt="">
+                        </a><a class="catalog-card__title" href="#"> ШКАФЫ</a>
+                    </div>
+                    <div class="catalog-card section__catalog-card">
+                        <a class="catalog-card__photo img-cover" href="#">
+                            <img src="{% static 'img/general/catalog/3.jpg' %}" alt="">
+                        </a><a class="catalog-card__title" href="#"> ВАННЫ</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section-->
+        <!-- section-->
+
+
+        <section class="section">
+            <div class="section__container container">
+                <div class="section__header">
+                    <h2 class="section__title">каталог кухонь</h2>
+                </div>
+                <div class="splide js-catalog-slider is-arrows-top">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            {% for kitchen_vip in product_vip_list %}
+                            <li class="splide__slide">
+                                <div class="catalog-card section__catalog-card">
+                                    <a class="catalog-card__photo img-cover" href="kitchen/{{kitchen_vip.slug}}">
+                                        <img src="media/{{kitchen_vip.avatar}}" alt="">
+                                    </a><a class="catalog-card__title" href="#">{{kitchen_vip.name}}</a>
+                                    <div class="catalog-card__caption"></div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="section__footer"> <a class="button is-outline section__button" href="kitchen/">посмотреть каталог </a>
+                </div>
+            </div>
+        </section>
+        <!-- end section-->
+        <!-- section-->
+        <section class="section">
+            <div class="section__container container">
+                <div class="section__header">
+                    <h2 class="section__title">ФУРНИТУРА BLUM</h2>
+                </div>
+                <div class="about-brand section__about-brand">
+                    <img class="about-brand__logo" src="{% static 'img/general/brand/blum.png' %}" alt="">
+                    <div class="about-brand__data">
+                        <p>С нашей фурнитурой Вы сможете воплотить в жизнь свои креативные идеи по созданию мебели. Мы предлагаем все необходимое для открывания и закрывания ящиков, верхних шкафов и дверей. Подходящие технологии движения делают их использование
+                            еще более удобным. Мы также поддерживаем наших клиентов в их повседневной работе с помощью различных сервисов и приспособлений для сборки.</p>
+                    </div>
+                </div>
+                <div class="section__grid">
+                    <div class="catalog-card section__catalog-card">
+                        <a class="catalog-card__photo img-cover" href="#">
+                            <img src="{% static 'img/general/catalog/7.jpg' %}" alt="">
+                        </a><a class="catalog-card__title" href="#">СИСТЕМЫ <br> ПЕТЕЛЬ</a>
+                    </div>
+                    <div class="catalog-card section__catalog-card">
+                        <a class="catalog-card__photo img-cover" href="#">
+                            <img src="{% static 'img/general/catalog/8.jpg' %}" alt="">
+                        </a><a class="catalog-card__title" href="#">ПОДЪЕМНЫЕ МЕХАНИЗМЫ</a>
+                    </div>
+                    <div class="catalog-card section__catalog-card">
+                        <a class="catalog-card__photo img-cover" href="#">
+                            <img src="{% static 'img/general/catalog/9.jpg' %}" alt="">
+                        </a><a class="catalog-card__title" href="#">СИСТЕМЫ ВЫДВИЖЕНИЯ</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section-->
+        <!-- section-->
+        <section class="section">
+            <div class="section__container container">
+                <div class="section__header">
+                    <h2 class="section__title">процесс</h2>
+                </div>
+                <div class="process section__process">
+                    <div class="process__photo img-cover">
+                        <img src="{% static 'img/general/process/1.jpg' %}" alt="">
+                    </div>
+                    <div class="process__inner">
+                        <div class="process__text">Изготовление кухни-это сложный многоступенчатый процесс. Но для наших клиентов-это всего четыре простых шага в сопровождени персонального дизайнера</div>
+                        <div class="process__data">
+                            <div class="process__card">
+                                <div class="process__card-header">
+                                    <div class="process__card-title">1. Бесплатный дизайн-проект</div>
+                                    <div class="process__card-circle"></div>
+                                </div>
+                                <div class="process__card-body">
+                                    <p>Разработаем индивидуальный проект в удобном вам формате: онлайн-проектирование, встреча в студии или выезд дизайнера на объект</p><a class="button process__card-button" href="#">заказать проект </a>
+                                </div>
+                            </div>
+                            <div class="process__card">
+                                <div class="process__card-header">
+                                    <div class="process__card-title">2. Бесплатный замер</div>
+                                    <div class="process__card-circle"></div>
+                                </div>
+                                <div class="process__card-body">
+                                    <p>Разработаем индивидуальный проект в удобном вам формате: онлайн-проектирование, встреча в студии или выезд дизайнера на объект</p><a class="button process__card-button" href="#">заказать проект</a>
+                                </div>
+                            </div>
+                            <div class="process__card">
+                                <div class="process__card-header">
+                                    <div class="process__card-title">3. Производство кухни</div>
+                                    <div class="process__card-circle"></div>
+                                </div>
+                                <div class="process__card-body">
+                                    <p>Разработаем индивидуальный проект в удобном вам формате: онлайн-проектирование, встреча в студии или выезд дизайнера на объект</p><a class="button process__card-button" href="#">заказать проект</a>
+                                </div>
+                            </div>
+                            <div class="process__card">
+                                <div class="process__card-header">
+                                    <div class="process__card-title">4. Доставка и сборка</div>
+                                    <div class="process__card-circle"></div>
+                                </div>
+                                <div class="process__card-body">
+                                    <p>Разработаем индивидуальный проект в удобном вам формате: онлайн-проектирование, встреча в студии или выезд дизайнера на объект</p><a class="button process__card-button" href="#">заказать проект</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section-->
+
+        <!-- section-->
+        <section class="section" style="margin-bottom:70px;">
+            <div class="section__container container">
+                <div class="section__header">
+                    <h2 class="section__title">ПАРТНЕРЫ</h2>
+                </div>
+                <div class="splide js-patners-slider">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/1.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/2.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/3.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/4.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/5.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/6.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/7.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/8.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/9.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/10.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/11.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/12.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/13.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/14.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/15.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/16.png' %}" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="{% static 'img/general/partners/17.png' %}" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section-->
+
+{% endblock content %}

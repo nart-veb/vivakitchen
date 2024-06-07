@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="main-header">
+            <div class="main-header__container container">
+                <div class="breadcrumbs main-header__breadcrumbs">
+                    <ul class="breadcrumbs__list">
+                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="/">главная</a>
+                        </li>
+                        <li class="breadcrumbs__item"> <a class="breadcrumbs__link" href="#">{{nav}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <h1 class="main-header__title">Раздел в разработке</h1>
+                <div class="main-header__caption"></div>
+            </div>
+        </div>
+        <main class="main page__main">
+            <section class="section no-padding">
+                <div class="section__contrainer container">
+
+                </div>
+            </section>
+
+{% endblock content %}

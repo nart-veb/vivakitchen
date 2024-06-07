@@ -21,13 +21,13 @@
             <div class="main__container container">
                 <div class="detail main__detail">
                     <div class="detail__header">
-                        <h1 class="detail__title">{{header}} {{product.name}}</h1>
+                        <h1 class="detail__title">{{header}} {{product.name}}<span style="font-size:30px; color:#9F9F9F;"> #{{product.id}}</span></h1><br>  <span style="font-size:30px;  font-weight:700;">{{product.brand}} — </span> <span style="font-size:30px; color:#9F9F9F;  text-decoration: underline;"> {{product.collection}}</span>
                         <div class="detail__actions">
-                            <div class="detail__caption">Современный уют в классике</div>
-                            <div class="detail__buttons"> <a class="detail__plan js-gallery-box" href="{{product.image.url}}">чертеж</a><a class="detail__share" href="#">хочу купить</a>
+                            <div class="detail__caption" style="display:none">Современный уют в классике</div>
+                            <div class="detail__buttons"> <a class="detail__plan js-gallery-box" href="http://www.abxaz-konsalting.ru/bitrix/templates/consultant/img/viva.jpg">чертеж</a><a class="detail__share" href="https://wa.me/+79182073388?text=Здравствуйте. Меня интересует {{product.name}} ({{product.id}}) на вашем сайте.">хочу купить</a>
                             </div>
                         </div>
-                        <div class="detail__price">{% if product.price %} от {{product.price}} рублей {% else %} Цена за товар не указана {% endif %} </div>
+                        <div class="detail__price">{% if product.price %} от {{product.price}} рублей {% else %} &nbsp;  {% endif %} </div>
                     </div>
                     <div class="detail__body">
                         <div class="splide js-detail-slider">
@@ -73,6 +73,41 @@
                 </div>
             </div>
         </main>
+
+                {% if product_list %}
+                <h1 class="container main-header__title" style="margin:40px auto;">Вам понравится</h1>
+                <div class="main__grid container">
+
+                    {% for product in product_list %}
+                    <div class="main__col">
+                        <div class="catalog-card is-secondary main__catalog-card">
+                            <a class="catalog-card__photo img-cover" href="../{{product.slug}}">
+                                <img src="/media/{{product.avatar}}" alt="">
+                                {% if product.novelty == '1' %}
+                                <div class="catalog-card__badge">новинка</div>
+                                {% endif %}
+                            </a><a class="catalog-card__title" href="../{{product.slug}}">{% if product_name  %} {{product_name}} <br> {% endif %}  {{ product.name }}</a>
+                            <div class="catalog-card__list">
+
+
+
+                                {% if product.value_left %}
+                                <div class="catalog-card__item">{{ product.value_left }}</div>
+                                {% endif %}
+                                {% if product.value_right %}
+                                <div class="catalog-card__item">{{ product.value_right }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% if product.price %}
+                            <div class="catalog-card__price">от {{product.price}} ₽</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                {% endif %}
 
 
 {% endblock content %}

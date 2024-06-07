@@ -12,7 +12,7 @@ def product_detail(slug, element):
     characteristic = Characteristic.objects.filter(kitchen=product)
     image = Img.objects.filter(product=product)
     context = {
-         element: product,
+        element: product,
         "image_list": image,
         "characteristic_list": characteristic,
     }
