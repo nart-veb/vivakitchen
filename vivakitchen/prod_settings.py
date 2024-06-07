@@ -7,7 +7,7 @@ SECRET_KEY = 'djaasdasd231nsecure21w3-z$#k==ur@0_21j@l&r3fsajpx+bfrus!(8u*el-*9q
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'vivakitchen-sochi.ru', '185.233.187.168']
+ALLOWED_HOSTS = ['127.0.0.1', 'vivakitchen-sochi.ru', '91.231.218.221']
 
 
 CSRF_TRUSTED_ORIGINS=['http://vivakitchen-sochi.ru']
